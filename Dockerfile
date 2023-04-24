@@ -17,7 +17,7 @@ RUN cd ./Autoware \
 RUN mkdir ./PythonAPI
 ADD --chown=autoware https://carla-releases.s3.eu-west-3.amazonaws.com/Backup/carla-0.9.10-py2.7-linux-x86_64.egg ./PythonAPI
 RUN echo "export PYTHON2_EGG=$(ls /home/autoware/PythonAPI | grep py2.)" >> .bashrc \
-    && echo "export PYTHONPATH=\$PYTHONPATH:~/PythonAPI/\$PYTHON2_EGG" >> .bashrc
+    && echo "export PYTHONPATH=\$PYTHONPATH:/home/autoware/PythonAPI/\$PYTHON2_EGG" >> .bashrc
 
 # CARLA ROS Bridge
 # There is some kind of mismatch between the ROS debian packages installed in the Autoware image and
@@ -49,9 +49,11 @@ RUN cd carla_ws/src \
     && source /opt/ros/melodic/setup.bash \
     && catkin_make
 
-RUN echo "export CARLA_AUTOWARE_CONTENTS=~/autoware-contents" >> .bashrc \
-    && echo "source ~/carla_ws/devel/setup.bash" >> .bashrc \
-    && echo "source ~/Autoware/install/setup.bash" >> .bashrc
-
-CMD ["/bin/bash"]
-
+RUN echo "export CARLA_AUTOWARE_CONTENTS=/home/autoware/autoware-contents" >> .bashrc \
+    && echo "source /home/autoware/carla_ws/devel/setup.bash" >> .bashrc \
+    && echo "source /home/autoware/Autoware/install/setup.bash" >> .bashrc \
+    && chmod +x /home/autoware/carla-autoware/stuff/localization_error.sh
+#CMD ["/bin/bash"]
+#ENTRYPOINT ["/bin/bash"]
+#CMD ["/bin/bash", "-c", "/usr/bin/python /home/autoware/carla-autoware/stuff/localization_error.py"]
+ENTRYPOINT ["/home/autoware/carla-autoware/stuff/localization_error.sh"]

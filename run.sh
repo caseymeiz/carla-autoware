@@ -10,8 +10,18 @@ fi
 
 echo $RUNTIME
 
+#docker run \
+#    -it --rm \
+#    --volume=$(pwd)/autoware-contents:/home/autoware/autoware-contents:ro \
+#    --env="DISPLAY=${DISPLAY}" \
+#    --privileged \
+#    --net=host \
+#    $RUNTIME \
+#    carla-autoware:latest
+
+
 docker run \
-    -it --rm \
+    --rm \
     --volume=$(pwd)/autoware-contents:/home/autoware/autoware-contents:ro \
     --env="DISPLAY=${DISPLAY}" \
     --privileged \
