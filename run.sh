@@ -8,6 +8,8 @@ else
     RUNTIME="--runtime=nvidia"
 fi
 
+echo $RUNTIME
+
 docker run \
     -it --rm \
     --volume=$(pwd)/autoware-contents:/home/autoware/autoware-contents:ro \
