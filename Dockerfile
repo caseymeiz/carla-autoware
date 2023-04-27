@@ -51,8 +51,7 @@ RUN cd carla_ws/src \
 
 RUN echo "export CARLA_AUTOWARE_CONTENTS=/home/autoware/autoware-contents" >> .bashrc \
     && echo "source /home/autoware/carla_ws/devel/setup.bash" >> .bashrc \
-    && echo "source /home/autoware/Autoware/install/setup.bash" >> .bashrc \
-    && chmod +x /home/autoware/carla-autoware/stuff/localization_error.sh
+    && echo "source /home/autoware/Autoware/install/setup.bash" >> .bashrc
 CMD ["/bin/bash"]
 #ENTRYPOINT ["/bin/bash"]
 #CMD ["/bin/bash", "-c", "/usr/bin/python /home/autoware/carla-autoware/stuff/localization_error.py"]

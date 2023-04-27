@@ -35,6 +35,15 @@ The prompt should be something like `autoware@zebra:/home/autoware$ `.
 
 You can now run the following scripts.
 
+#### Benchmarks 
+Run these after you run the main.sh
+
+The result will be printed to the console.
+
+Note: there will be GUIs popping up and disappearing, ignore them
+
+There are a set number of locations that the script collects from, those locations were collected with [this](./stuff/get_spawn_locations.py) script. It will attempt to collect from them but might skip over some if there are errors. 
+
 #### Localization accuracy
 ```shell
 python /home/autoware/carla-autoware/stuff/localization_error.py
@@ -43,9 +52,13 @@ You can see the script [here](./stuff/localization_error.py), if you make change
 
 This will run Autoware / ROS and spawn a car in the map and the collect the localization results by subscribing to the topic `/current_pose` then compare the current location to some ground truth collected from Carla.
 
-The result will be printed to the console.
 
-Note: there will be GUIs popping up and disappearing, ignore them
+#### Localization latency
+```shell
+python /home/autoware/carla-autoware/stuff/localization_latency.py
+```
+You can see the script [here](./stuff/localization_latency.py), if you make changes you have to rerun the main.sh.
 
-There are a set number of locations that the script collects accuracy from, those locations were collected with [this](./stuff/get_spawn_locations.py) script.
+This will run Autoware / ROS and spawn a car in the map and the collect the localization results by subscribing to the topic `/current_pose` then calculate how long it takes to publish the next pose on average.
+
 
