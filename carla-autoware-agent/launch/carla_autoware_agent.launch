@@ -7,7 +7,8 @@
   <arg name='host' default='localhost'/>
   <arg name='port' default='2000'/>
   <arg name='town' default='Town01'/>
-
+  <arg name="headless" value="true"/>
+  <arg name="gui" value="false"/>
   <arg name='agent' default='agent'/>
 
   <arg name='role_name' default='ego_vehicle'/>
