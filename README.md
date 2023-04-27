@@ -52,6 +52,10 @@ You can see the script [here](./stuff/localization_error.py), if you make change
 
 This will run Autoware / ROS and spawn a car in the map and the collect the localization results by subscribing to the topic `/current_pose` then compare the current location to some ground truth collected from Carla.
 
+Output in meters
+```shell
+('Localization Error:', 0.01325)
+```
 
 #### Localization latency
 ```shell
@@ -61,4 +65,7 @@ You can see the script [here](./stuff/localization_latency.py), if you make chan
 
 This will run Autoware / ROS and spawn a car in the map and the collect the localization results by subscribing to the topic `/current_pose` then calculate how long it takes to publish the next pose on average.
 
-
+Output in milliseconds
+```shell
+('Localization Latency:', 45.0)
+```
